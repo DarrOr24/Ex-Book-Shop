@@ -23,10 +23,16 @@ function renderBooks(){
         <td class="btns">
             <button class="read">Read</button>
             <button class="update">Update</button>
-            <button class="delete">Delete</button>
+            <button class="delete" onclick="onRemoveBook('${book.id}')">Delete</button>
         </td>
     </tr>`)
 
     elTable.innerHTML = strHtmls.join('')
+
+}
+
+function removeBook(bookId){
+    const idx = gBooks.findIndex(book => book.id === bookId)
+    gBooks.splice(idx,1)
 
 }
