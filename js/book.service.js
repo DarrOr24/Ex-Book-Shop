@@ -10,26 +10,6 @@ function getBooks(){
     return gBooks
 }
 
-function renderBooks(){
-    const elTable = document.querySelector('table')
-    const strHtmls = gBooks.map(book => `<tr class="header">
-        <td class="col1">Title</td>
-        <td class="col2">Price</td>
-        <td class="col3">Actions</td>
-    </tr>
-    <tr>
-        <td class="col1">${book.title}</td>
-        <td class="col2">${book.price}</td>
-        <td class="btns">
-            <button class="read">Read</button>
-            <button class="update" onclick="onUpdateBook('${book.id}')">Update</button>
-            <button class="delete" onclick="onRemoveBook('${book.id}')">Delete</button>
-        </td>
-    </tr>`)
-
-    elTable.innerHTML = strHtmls.join('')
-
-}
 
 function removeBook(bookId){
     const idx = gBooks.findIndex(book => book.id === bookId)
@@ -57,3 +37,9 @@ function _createBook(title, price){
         price,
     }
 }
+
+function readBook(bookId) { // Read
+    const book = gBooks.find(book => book.id === bookId)
+    return book
+}
+

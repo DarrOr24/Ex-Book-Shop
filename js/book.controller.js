@@ -56,10 +56,6 @@ function onReadBook(bookId) {
     elTxt.innerText = book.title
     elPre.innerText = bookStr
 
-    elModal.classList.remove('hidden')
+    elModal.showModal()
 }
 
-function onCloseBookDetails(ev, elModal) {
-    ev.preventDefault()
-    elModal.classList.add('hidden')
-}
