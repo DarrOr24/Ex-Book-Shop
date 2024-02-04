@@ -22,7 +22,7 @@ function renderBooks(){
         <td class="col2">${book.price}</td>
         <td class="btns">
             <button class="read">Read</button>
-            <button class="update">Update</button>
+            <button class="update" onclick="onUpdateBook('${book.id}')">Update</button>
             <button class="delete" onclick="onRemoveBook('${book.id}')">Delete</button>
         </td>
     </tr>`)
@@ -35,4 +35,10 @@ function removeBook(bookId){
     const idx = gBooks.findIndex(book => book.id === bookId)
     gBooks.splice(idx,1)
 
+}
+
+function updatePrice(bookId, newPrice){
+    const book = gBooks.find(book => book.id === bookId)
+    book.price = newPrice
+    // return book
 }
