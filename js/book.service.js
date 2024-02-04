@@ -42,3 +42,18 @@ function updatePrice(bookId, newPrice){
     book.price = newPrice
     // return book
 }
+
+function addBook(bookTitle, bookPrice){
+    const book = _createBook(bookTitle, bookPrice)
+    gBooks.unshift(book)
+    // return book
+
+}
+
+function _createBook(title, price){
+    return {
+        id: makeId(),
+        title,
+        price,
+    }
+}

@@ -4,11 +4,16 @@
 
 body {
     display:grid;
-    place-items: center;
+    grid-template-columns: 6fr 1fr;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.add {
+    place-self: center;
+}
+
 table {
+    justify-self: center;
     margin-block-start: 20vh;
     background-color: rgb(191, 191, 191);
 
