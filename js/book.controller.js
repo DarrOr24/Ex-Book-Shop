@@ -10,7 +10,7 @@ function onRemoveBook(bookId){
 }
 
 function onUpdateBook(bookId){
-    const newPrice = prompt('Enter your price, be fair')
+    const newPrice = prompt('Enter updated price')
     updatePrice(bookId, newPrice)
     renderBooks()
 }
