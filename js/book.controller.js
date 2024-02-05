@@ -31,13 +31,13 @@ function renderBooks(){
 function onRemoveBook(bookId){
     const strHtml = removeBook(bookId)
     renderBooks()
-    onPopUp(strHtml) 
+    renderPopUp(strHtml) 
 }
 
 function onUpdateBook(bookId){
     const newPrice = prompt('Enter updated price')
     const strHtml = updatePrice(bookId, newPrice)
-    onPopUp(strHtml) 
+    renderPopUp(strHtml) 
     renderBooks()
 }
 
@@ -47,7 +47,7 @@ function onAddBook(){
         var bookPrice = prompt('Enter book price')
     }
     const strHtml = addBook(bookTitle, bookPrice)
-    onPopUp(strHtml) 
+    renderPopUp(strHtml) 
     renderBooks()
 }
 
@@ -77,7 +77,7 @@ function onClear(){
     clear()
 }
 
-function onPopUp(msg){
+function renderPopUp(msg){
     const elPopUp = document.querySelector('.pop-up')
     elPopUp.innerText = msg
     elPopUp.classList.remove('hidden')
