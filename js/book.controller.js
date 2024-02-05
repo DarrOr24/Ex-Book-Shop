@@ -5,15 +5,8 @@ function onInit(){
 }
 
 function renderBooks(){
-    const elTable = document.querySelector('table')
+    const elTable = document.querySelector('tbody')
     const books = getBooks()
-
-    const strHeader =[ `<tr class="header">
-    <td class="col1">Title</td>
-    <td class="col2">Price</td>
-    <td class="col3">Actions</td>
-</tr>`]
-    
 
     const strHtmls = books.map(book => `<tr>
         <td class="col1">${book.title}</td>
@@ -25,7 +18,7 @@ function renderBooks(){
         </td>
     </tr>`)
 
-    elTable.innerHTML =strHeader.join('') + strHtmls.join('') 
+    elTable.innerHTML = strHtmls.join('') 
 }
 
 function onRemoveBook(bookId){
@@ -85,4 +78,5 @@ function renderPopUp(msg){
         elPopUp.classList.add('hidden')
     },2000)
 }
+
 

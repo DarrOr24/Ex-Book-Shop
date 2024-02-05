@@ -31,23 +31,23 @@ table {
 }
 
 
+thead {
+    font-weight: bold;
+    background-color: rgb(180, 168, 168);
+}
+
 tr {
     height: 2em;
     width: max-content;
 }
 
 
-tr:nth-child(even) {
+tbody tr:nth-child(even) {
     background-color: white;
 }
 
-tr:nth-child(odd) {
+tbody tr:nth-child(odd) {
     background-color: rgb(226, 225, 225);
-}
-
-tr:first-child {
-    font-weight: bold; 
-    background-color: lightgrey;
 }
 
 
@@ -102,6 +102,8 @@ img {
 
 .pop-up{
     grid-area: pop-up;
+    position:absolute;
+    top: 4em;
     background-color: rgba(180, 156, 156, 0.443);
     padding-inline: 0.5em;
     border-radius: 20%;  
@@ -110,6 +112,8 @@ img {
 footer {
     grid-area: footer;
     place-self: center;
+    position: absolute;
+    bottom: 5em;
     background-color: rgba(180, 156, 156, 0.443);
     border-radius: 20%;  
     width: 15em;
