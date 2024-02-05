@@ -8,12 +8,14 @@ function renderBooks(){
     const elTable = document.querySelector('table')
     const books = getBooks()
 
-    const strHtmls = books.map(book => `<tr class="header">
-        <td class="col1">Title</td>
-        <td class="col2">Price</td>
-        <td class="col3">Actions</td>
-    </tr>
-    <tr>
+    const strHeader =[ `<tr class="header">
+    <td class="col1">Title</td>
+    <td class="col2">Price</td>
+    <td class="col3">Actions</td>
+</tr>`]
+    
+
+    const strHtmls = books.map(book => `<tr>
         <td class="col1">${book.title}</td>
         <td class="col2">${book.price}</td>
         <td class="btns">
@@ -23,7 +25,7 @@ function renderBooks(){
         </td>
     </tr>`)
 
-    elTable.innerHTML = strHtmls.join('')
+    elTable.innerHTML =strHeader.join('') + strHtmls.join('') 
 }
 
 function onRemoveBook(bookId){
