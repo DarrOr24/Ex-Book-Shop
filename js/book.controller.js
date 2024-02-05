@@ -24,7 +24,6 @@ function renderBooks(){
     </tr>`)
 
     elTable.innerHTML = strHtmls.join('')
-
 }
 
 function onRemoveBook(bookId){

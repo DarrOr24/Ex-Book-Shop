@@ -1,11 +1,5 @@
 'use strict'
 
-// var gBooks = [
-//     {id: 'b101', title: 'The Adventures of Tom Sawyer', price: 120, img: 'img/The-Adventures-of-Tom-Sawyer.png'},
-//     {id: 'b102', title: 'World Atlas', price: 300, img: 'img/World-Atlas.png'},
-//     {id: 'b103', title: 'Zorba the Greek', price: 87, img: 'img/Zorba-the-Greek.png'}
-// ]
-
 var gBooks
 _createBooks()
 
@@ -13,13 +7,10 @@ function getBooks(){
     return gBooks
 }
 
-
 function removeBook(bookId){
     const idx = gBooks.findIndex(book => book.id === bookId)
     gBooks.splice(idx,1)
-
     _saveBooks()
-
 }
 
 function updatePrice(bookId, newPrice){
@@ -34,7 +25,6 @@ function addBook(bookTitle, bookPrice){
     gBooks.unshift(book)
     _saveBooks()
     return book
-
 }
 
 function readBook(bookId) { // Read
@@ -42,14 +32,11 @@ function readBook(bookId) { // Read
     return book
 }
 
-
-
 //Private functions
 
 function _createBooks() {
     gBooks = loadFromStorage('bookDB')
     if(!gBooks || gBooks.length === 0){
-
         gBooks = [
             _createBook('The Adventures of Tom Sawyer', 120, 'img/The-Adventures-of-Tom-Sawyer.png'), 
             _createBook('World Atlas', 300, 'img/World-Atlas.png'), 
