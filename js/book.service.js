@@ -1,6 +1,7 @@
 'use strict'
 
 var gBooks
+var gSearchIdx = 0
 _createBooks()
 
 function getBooks(){
@@ -30,6 +31,19 @@ function addBook(bookTitle, bookPrice){
 function readBook(bookId) { // Read
     const book = gBooks.find(book => book.id === bookId)
     return book
+}
+
+function search(letter){
+    var books = gBooks.filter(book => book.title.charAt(gSearchIdx).toLowerCase() === letter.toLowerCase() )
+    gSearchIdx++
+    gBooks = books
+    renderBooks()
+}
+
+function clear(){
+    gSearchIdx = 0
+    _createBooks()
+    renderBooks()
 }
 
 //Private functions

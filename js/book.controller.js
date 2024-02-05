@@ -62,10 +62,11 @@ function onReadBook(bookId) {
 }
 
 function onSearch(event){
-    console.log(event.data)
+    search(event.data)
 }
 
 function onClear(){
     document.querySelector('.search').reset()
+    clear()
 }
 
