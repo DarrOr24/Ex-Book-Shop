@@ -9,9 +9,24 @@
 
 <body onload="onInit()">
 
-    <table></table>
-    <button class="add" onclick="onAddBook()">Add Book</button>
+    <!-- <section class="filter">
+        <span>Filter by:</span>
+        <select onchange="onSetFilterBy(this)">
+            <option value="">All</option>
+            <option value="Title">Title</option>
+        </select>
+    </section> -->
 
+    <form class="search">
+        <input type="text" placeholder="Search by book title">
+        <button>Search</button>
+        <button>Clear</button>
+    </form>
+    
+    <button class="add" onclick="onAddBook()">Add Book</button>
+    
+    <table></table>
+    
     <dialog class="book-details">
         <form method="dialog">
             <button>x</button>

@@ -3,20 +3,31 @@
 }
 
 body {
+    /* height: 50vh; */
     display:grid;
-    grid-template-columns: 6fr 1fr;
+    /* grid-template-rows: 1fr 6fr;
+    grid-template-columns: 6fr 1fr; */
+    grid-template-areas: "search add "
+                         "table   table ";
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.add {
+.add, table, .search {
+    margin-block-start: 3%;
     place-self: center;
 }
 
-table {
-    justify-self: center;
-    margin-block-start: 20vh;
-    background-color: rgb(191, 191, 191);
+.search {
+    grid-area: search;
+}
 
+.add {
+    grid-area: add;
+}
+
+table {
+    grid-area: table;
+    background-color: rgb(191, 191, 191);
 }
 
 .header{
