@@ -40,8 +40,10 @@ function onUpdateBook(bookId){
 }
 
 function onAddBook(){
-    const bookTitle = prompt('Enter book title')
-    const bookPrice = prompt('Enter book price')
+    while((!bookTitle) || (!bookPrice)){
+        var bookTitle = prompt('Enter book title')
+        var bookPrice = prompt('Enter book price')
+    }
     const strHtml = addBook(bookTitle, bookPrice)
     onPopUp(strHtml) 
     renderBooks()
