@@ -27,20 +27,23 @@ function renderBooks(){
 }
 
 function onRemoveBook(bookId){
-    removeBook(bookId)
+    const strHtml = removeBook(bookId)
     renderBooks()
+    onPopUp(strHtml) 
 }
 
 function onUpdateBook(bookId){
     const newPrice = prompt('Enter updated price')
-    updatePrice(bookId, newPrice)
+    const strHtml = updatePrice(bookId, newPrice)
+    onPopUp(strHtml) 
     renderBooks()
 }
 
 function onAddBook(){
     const bookTitle = prompt('Enter book title')
     const bookPrice = prompt('Enter book price')
-    addBook(bookTitle, bookPrice)
+    const strHtml = addBook(bookTitle, bookPrice)
+    onPopUp(strHtml) 
     renderBooks()
 }
 
@@ -68,5 +71,14 @@ function onSearch(event){
 function onClear(){
     document.querySelector('.search').reset()
     clear()
+}
+
+function onPopUp(msg){
+    const elPopUp = document.querySelector('.pop-up')
+    elPopUp.innerText = msg
+    elPopUp.classList.remove('hidden')
+    setTimeout(() => {
+        elPopUp.classList.add('hidden')
+    },2000)
 }
 

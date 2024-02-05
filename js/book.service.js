@@ -10,22 +10,25 @@ function getBooks(){
 
 function removeBook(bookId){
     const idx = gBooks.findIndex(book => book.id === bookId)
+    const book = gBooks.find(book => book.id === bookId)
     gBooks.splice(idx,1)
+    
     _saveBooks()
+    return `${book.title} was successfully removed!`
 }
 
 function updatePrice(bookId, newPrice){
     const book = gBooks.find(book => book.id === bookId)
     book.price = newPrice
     _saveBooks()
-    return book
+    return `${book.title} was successfully updated!`
 }
 
 function addBook(bookTitle, bookPrice){
     const book = _createBook(bookTitle, bookPrice)
     gBooks.unshift(book)
     _saveBooks()
-    return book
+    return `${book.title} was successfully added!`
 }
 
 function readBook(bookId) { // Read
@@ -45,6 +48,7 @@ function clear(){
     _createBooks()
     renderBooks()
 }
+
 
 //Private functions
 
