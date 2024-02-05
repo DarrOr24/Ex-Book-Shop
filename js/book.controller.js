@@ -61,3 +61,11 @@ function onReadBook(bookId) {
     elModal.showModal()
 }
 
+function onSearch(event){
+    console.log(event.data)
+}
+
+function onClear(){
+    document.querySelector('.search').reset()
+}
+
