@@ -9,7 +9,6 @@ function getBooks(options = {}){
     if (!filterBy) return gBooks
     const books = _filterBooks(filterBy)
 
-
     if(options.sortBy.rating) {
         books.sort((book1, book2) => (book1.rating - book2.rating) * options.sortBy.rating)
     }
@@ -19,7 +18,6 @@ function getBooks(options = {}){
     else if(options.sortBy.title) {
         books.sort((book1, book2) => book1.title.localeCompare(book2.title) * options.sortBy.title)
     }
-
 
     return books
 }
@@ -52,7 +50,6 @@ function readBook(bookId) { // Read
     return book
 }
 
-
 function clear(){
     _createBooks()
     renderBooks()
@@ -68,9 +65,7 @@ function getStats() {
     }, { cheap: 0, avg: 0, expensive: 0})
 }
 
-
 //Private functions
-
 
 function _filterBooks(filterBy) {
     const txt = filterBy.txt.toLowerCase()

@@ -6,7 +6,6 @@ const gQueryOptions = {
     page: { idx: 0, size: 4 }
 }
 
-
 function onInit(){
     renderBooks()
     renderBookTitles()
@@ -123,7 +122,6 @@ function onSetFilterBy() {
     gQueryOptions.filterBy.txt = elBookTitle.value
     gQueryOptions.filterBy.minRating = elRating.value
 
-    console.log(gQueryOptions.filterBy)
     renderBooks()
 }
 
