@@ -1,12 +1,15 @@
 'use strict'
 
+var gFilterBy = ''
+
 function onInit(){
     renderBooks()
 }
 
 function renderBooks(){
     const elTable = document.querySelector('tbody')
-    const books = getBooks()
+    const books = getBooks(gFilterBy)
+    const emptyTable = `<tr><td colspan="3">No matching books were found</td></tr>`
 
     const strHtmls = books.map(book => `<tr>
         <td class="col1">${book.title}</td>
@@ -18,7 +21,8 @@ function renderBooks(){
         </td>
     </tr>`)
 
-    elTable.innerHTML = strHtmls.join('') 
+    if (!books.length) elTable.innerHTML = emptyTable
+    else elTable.innerHTML = strHtmls.join('') 
     renderStats()
 }
 
@@ -62,13 +66,18 @@ function onReadBook(bookId) {
     elModal.showModal()
 }
 
-function onSearch(event){
-    search(event.data)
+function onBookFilter(){
+    const input = document.querySelector('input')
+    gFilterBy = input.value
+
+    renderBooks()
 }
 
 function onClear(){
-    document.querySelector('.search').reset()
+    // document.querySelector('.search').reset()
+    const elSearch = document.querySelector('.search')
     clear()
+    elSearch.value = gFilterBy = ''
 }
 
 function renderPopUp(msg){

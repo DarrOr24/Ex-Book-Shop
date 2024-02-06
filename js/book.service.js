@@ -1,11 +1,13 @@
 'use strict'
 
 var gBooks
-var gSearchIdx = 0
 _createBooks()
 
-function getBooks(){
-    return gBooks
+function getBooks(filterBy){
+    // return gBooks
+    if (!filterBy) return gBooks
+    var filterdBooks = gBooks.filter(book => book.title.toLowerCase().includes(filterBy.toLowerCase()))
+    return filterdBooks
 }
 
 function removeBook(bookId){
@@ -36,15 +38,8 @@ function readBook(bookId) { // Read
     return book
 }
 
-function search(letter){
-    var books = gBooks.filter(book => book.title.charAt(gSearchIdx).toLowerCase() === letter.toLowerCase() )
-    gSearchIdx++
-    gBooks = books
-    renderBooks()
-}
 
 function clear(){
-    gSearchIdx = 0
     _createBooks()
     renderBooks()
 }
