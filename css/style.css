@@ -110,12 +110,12 @@ img {
 }
 
 footer {
+    margin-inline: 5em;
     grid-area: footer;
-    place-self: center;
-    position: absolute;
-    bottom: 5em;
-    background-color: rgba(180, 156, 156, 0.443);
-    border-radius: 20%;  
-    width: 15em;
-    padding-inline: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+    background-color: rgba(180, 156, 156, 0.443); 
+    height:fit-content;
 }
