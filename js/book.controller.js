@@ -137,3 +137,23 @@ function onSetFilterBy() {
     renderBooks()
 }
 
+function onSetSortBy() {
+    const elSortBy = document.querySelector('.sort-by select')
+    const elDir = document.querySelector('.sort-by input')
+
+    const sortBy = elSortBy.value
+    const dir = elDir.checked ? -1 : 1
+
+    if(sortBy === 'title'){
+        gQueryOptions.sortBy = { title: dir }
+    } else if (sortBy === 'price'){
+        gQueryOptions.sortBy = { price: dir }
+    } else if (sortBy === 'rating'){
+        gQueryOptions.sortBy = { rating: dir }
+    }
+
+    console.log(gQueryOptions)
+
+    // gQueryOptions.sortBy = { [sortBy]: dir }
+    renderBooks()
+}
