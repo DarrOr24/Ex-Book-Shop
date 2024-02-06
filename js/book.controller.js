@@ -49,7 +49,7 @@ function onRemoveBook(bookId){
     renderBooks()
     renderPopUp(`${book.title} was successfully removed!`) 
     const elBookList = document.querySelector('.book-list')
-    console.log(elBookList.innerHTML)
+    elBookList.remove(book.title)
 }
 
 function onUpdateBook(bookId){
@@ -98,10 +98,11 @@ function onBookFilter(){
 }
 
 function onClear(){
-    // document.querySelector('.search').reset()
-    const elSearch = document.querySelector('.search')
+    document.querySelector('.search').reset()
+    // const elSearch = document.querySelector('.search')
     clear()
-    elSearch.value = gFilterBy = ''
+    // elSearch.value = gQueryOptions.filterBy = ''
+    gQueryOptions.filterBy = ''
 }
 
 function renderPopUp(msg){
