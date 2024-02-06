@@ -50,6 +50,22 @@
 
     </section>
 
+    <dialog class="book-edit-modal">
+        <form onsubmit="onSaveBook()" method="dialog">
+            <h2>Add a Book</h2>
+            <img src="" alt="">
+            <!-- <select class="vendor-list" onchange="onSelectVendor(this)">
+                <option value="">Choose vendor...</option>
+            </select> -->
+            <input class="book-title" type="text" placeholder="Enter book title">
+            <input class="book-price" type="number" placeholder="Enter book price">
+            <div class="actions">
+                <button type="button" onclick="onCloseBookEdit()">Cancel</button>
+                <button>Save</button>
+            </div>
+        </form>
+    </dialog>
+
     <button class="add" onclick="onAddBook()">Add Book</button>
     
     <table>

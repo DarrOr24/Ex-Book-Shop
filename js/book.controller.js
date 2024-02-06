@@ -60,16 +60,25 @@ function onUpdateBook(bookId){
 }
 
 function onAddBook(){
-    while((!bookTitle) || (!bookPrice)){
-        var bookTitle = prompt('Enter book title')
-        var bookPrice = prompt('Enter book price')
-    }
-    const book = addBook(bookTitle, bookPrice)
-    
-    renderPopUp(`${book.title} was successfully added!`) 
-    renderBooks()
+    const elModal = document.querySelector('.book-edit-modal')
+    elModal.showModal()
+}
 
-    const strHtml = `<option>${book.title}</option>`
+function onSaveBook(){
+    const elForm = document.querySelector('.book-edit-modal form')
+
+    const elBookTitle = elForm.querySelector('.book-title')
+    const elBookPrice = elForm.querySelector('.book-price')
+    
+    const bookTitle = elBookTitle.value
+    const bookPrice = elBookPrice.value
+
+    const book = addBook(bookTitle, bookPrice)
+    elForm.reset()
+
+    renderBooks()
+    renderPopUp(`${book.title} was successfully added!`) 
+    
     const elBookList = document.querySelector('.book-list')
     elBookList.innerHTML += strHtml
 }
