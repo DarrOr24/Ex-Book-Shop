@@ -1,5 +1,6 @@
 'use strict'
 
+const STORAGE_KEY = 'bookDB'
 var gBooks
 _createBooks()
 
@@ -58,7 +59,7 @@ function getStats() {
 //Private functions
 
 function _createBooks() {
-    gBooks = loadFromStorage('bookDB')
+    gBooks = loadFromStorage(STORAGE_KEY)
     if(!gBooks || gBooks.length === 0){
         gBooks = [
             _createBook('The Adventures of Tom Sawyer', 120, 'img/The-Adventures-of-Tom-Sawyer.png'), 
@@ -69,17 +70,18 @@ function _createBooks() {
     }
 }
 
-function _createBook(title, price, img = 'img/book-cover.png'){
+function _createBook(title, price, img = 'img/book-cover.png', rating){
     return {
         id: makeId(),
         title,
         price,
         img,
+        rating: getRandomInt(1, 11),
     }
 }
 
 function _saveBooks() {
-    saveToStorage('bookDB', gBooks)
+    saveToStorage(STORAGE_KEY, gBooks)
 }
 
 
