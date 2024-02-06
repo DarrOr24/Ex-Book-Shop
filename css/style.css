@@ -20,16 +20,13 @@ body {
     
 }
 
-fieldset {
-    display: flex;
-	align-items: center;
-	justify-content: space-between;
-
+.filter-and-sort {
+    display:flex;
+    justify-content: space-between;
 }
 
-.book-list {
+.book-list, .sort-by select {
     width: 10em;
-    
 }
 
 .add, table, .pop-up {
