@@ -1,12 +1,11 @@
 'use strict'
 
 const gQueryOptions = {
-    filterBy: { txt: '', rating: 0 },
+    filterBy: { txt: '', minRating: 0 },
     sortBy: {},
     page: { idx: 0, size: 4 }
 }
 
-var gFilterBy = ''
 
 function onInit(){
     renderBooks()
@@ -43,7 +42,6 @@ function renderBookTitles() {
 
     const elBookList = document.querySelector('.book-list')
     elBookList.innerHTML += strHtml
-
 }
 
 function onRemoveBook(bookId){
@@ -95,11 +93,7 @@ function onReadBook(bookId) {
 
 function onBookFilter(){
     const input = document.querySelector('input')
-    gFilterBy = input.value
-    console.log(input.value)
     gQueryOptions.filterBy.txt = input.value
-    console.log(gQueryOptions)
-
     renderBooks()
 }
 
@@ -136,7 +130,7 @@ function onSetFilterBy() {
     const elRating = document.querySelector('.filter-by input')
 
     gQueryOptions.filterBy.txt = elBookTitle.value
-    gQueryOptions.filterBy.rating = elRating.value
+    gQueryOptions.filterBy.minRating = elRating.value
 
     console.log(gQueryOptions.filterBy)
     renderBooks()

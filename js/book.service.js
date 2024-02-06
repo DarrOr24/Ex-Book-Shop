@@ -5,10 +5,12 @@ var gBooks
 _createBooks()
 
 function getBooks(options = {}){
-    const filterBy = options.filterBy.txt
+    // const filterBy = options.filterBy.txt
+    const filterBy = options.filterBy
     console.log(filterBy)
     if (!filterBy) return gBooks
-    var filterdBooks = gBooks.filter(book => book.title.toLowerCase().includes(filterBy.toLowerCase()))
+    const filterdBooks = _filterBooks(filterBy)
+    // var filterdBooks = gBooks.filter(book => book.title.toLowerCase().includes(filterBy.toLowerCase()))
     return filterdBooks
 }
 
@@ -59,6 +61,19 @@ function getStats() {
 
 //Private functions
 
+
+function _filterBooks(filterBy) {
+
+    const txt = filterBy.txt.toLowerCase()
+    const minRating = filterBy.minRating
+
+    const books = gBooks.filter(book => 
+        book.title.toLowerCase().includes(txt) &&
+        book.rating >= minRating)
+
+    return books
+}
+
 function _createBooks() {
     gBooks = loadFromStorage(STORAGE_KEY)
     if(!gBooks || gBooks.length === 0){
@@ -71,7 +86,7 @@ function _createBooks() {
     }
 }
 
-function _createBook(title, price, img = 'img/book-cover.png', rating){
+function _createBook(title, price, img = 'img/book-cover.png'){
     return {
         id: makeId(),
         title,
