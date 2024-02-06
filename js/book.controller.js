@@ -1,14 +1,22 @@
 'use strict'
 
+const gQueryOptions = {
+    filterBy: { txt: '', rating: 0 },
+    sortBy: {},
+    page: { idx: 0, size: 4 }
+}
+
 var gFilterBy = ''
 
 function onInit(){
     renderBooks()
+    renderBookTitles()
 }
 
 function renderBooks(){
     const elTable = document.querySelector('tbody')
-    const books = getBooks(gFilterBy)
+    const books = getBooks(gQueryOptions)
+
     const emptyTable = `<tr><td colspan="3">No matching books were found</td></tr>`
 
     const strHtmls = books.map(book => `<tr>
@@ -26,10 +34,24 @@ function renderBooks(){
     renderStats()
 }
 
+function renderBookTitles() {
+    const books = getBooks(gQueryOptions)
+    
+    const strHtml = books.map(book => `
+        <option>${book.title}</option>
+    `).join('')
+
+    const elBookList = document.querySelector('.book-list')
+    elBookList.innerHTML += strHtml
+
+}
+
 function onRemoveBook(bookId){
-    const strHtml = removeBook(bookId)
+    const book = removeBook(bookId)
     renderBooks()
-    renderPopUp(strHtml) 
+    renderPopUp(`${book.title} was successfully removed!`) 
+    const elBookList = document.querySelector('.book-list')
+    console.log(elBookList.innerHTML)
 }
 
 function onUpdateBook(bookId){
@@ -44,9 +66,14 @@ function onAddBook(){
         var bookTitle = prompt('Enter book title')
         var bookPrice = prompt('Enter book price')
     }
-    const strHtml = addBook(bookTitle, bookPrice)
-    renderPopUp(strHtml) 
+    const book = addBook(bookTitle, bookPrice)
+    
+    renderPopUp(`${book.title} was successfully added!`) 
     renderBooks()
+
+    const strHtml = `<option>${book.title}</option>`
+    const elBookList = document.querySelector('.book-list')
+    elBookList.innerHTML += strHtml
 }
 
 function onReadBook(bookId) {
@@ -69,6 +96,9 @@ function onReadBook(bookId) {
 function onBookFilter(){
     const input = document.querySelector('input')
     gFilterBy = input.value
+    console.log(input.value)
+    gQueryOptions.filterBy.txt = input.value
+    console.log(gQueryOptions)
 
     renderBooks()
 }
@@ -99,5 +129,16 @@ function renderStats() {
     elExpens.innerText = stats.expensive
     elCheap.innerText = stats.cheap
     elAvg.innerText = stats.avg
+}
+
+function onSetFilterBy() {
+    const elBookTitle = document.querySelector('.filter-by select')
+    const elRating = document.querySelector('.filter-by input')
+
+    gQueryOptions.filterBy.txt = elBookTitle.value
+    gQueryOptions.filterBy.rating = elRating.value
+
+    console.log(gQueryOptions.filterBy)
+    renderBooks()
 }
 

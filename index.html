@@ -9,11 +9,43 @@
 
 <body onload="onInit()">
 
-    <form class="search">
-        <input oninput="onBookFilter()" type="search" placeholder="Search by book title">
-        <button onclick="onClear()">Clear</button>
-    </form>
     
+    <section class="filter">
+        <fieldset>
+            <legend>Filter & Search</legend>
+            
+            <form class="search">
+                <input oninput="onBookFilter()" type="search" placeholder="Search...">
+                <button onclick="onClear()">Clear</button>
+            </form>
+
+            <div class="filter-by">
+                <select class="book-list" onchange="onSetFilterBy({bookTitle: this.value})">
+                    <option value="">Select book</option>
+                </select>
+                
+                <label>
+                    <span>Rating:</span>
+                    <input type="range" min="1" max="10" value="3" 
+                           onchange="this.title=this.value;onSetFilterBy({rating: +this.value})" />
+                </label>
+            </div>
+            
+            <!-- <div class="sort-by">
+                <select onchange="onSetSortBy()">
+                    <option value="">Select Sorting</option>
+                    <option value="vendor">By Vendor</option>
+                    <option value="maxSpeed">By Speed</option>
+                </select>
+                <label>
+                    <span>Descending</span>
+                    <input class="sort-desc" type="checkbox" oninput="onSetSortBy()" />
+                </label>
+            </div> -->
+        </fieldset> 
+
+    </section>
+
     <button class="add" onclick="onAddBook()">Add Book</button>
     
     <table>

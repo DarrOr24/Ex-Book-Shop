@@ -3,14 +3,19 @@
 }
 
 body {
+    background-color: antiquewhite;
     height: 90vh;
     display:grid;
     grid-template-rows: 1fr 6fr 1fr;
-    grid-template-areas: "search  add "
+    grid-template-areas: "filter add"
                          "table   table "
                          "pop-up  pop-up"
                          "footer footer";
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.filter {
+    grid-area: filter;
 }
 
 .add, table, .search, .pop-up {

@@ -4,8 +4,9 @@ const STORAGE_KEY = 'bookDB'
 var gBooks
 _createBooks()
 
-function getBooks(filterBy){
-    // return gBooks
+function getBooks(options = {}){
+    const filterBy = options.filterBy.txt
+    console.log(filterBy)
     if (!filterBy) return gBooks
     var filterdBooks = gBooks.filter(book => book.title.toLowerCase().includes(filterBy.toLowerCase()))
     return filterdBooks
@@ -17,7 +18,7 @@ function removeBook(bookId){
     gBooks.splice(idx,1)
     
     _saveBooks()
-    return `${book.title} was successfully removed!`
+    return book
 }
 
 function updatePrice(bookId, newPrice){
@@ -31,7 +32,7 @@ function addBook(bookTitle, bookPrice){
     const book = _createBook(bookTitle, bookPrice)
     gBooks.unshift(book)
     _saveBooks()
-    return `${book.title} was successfully added!`
+    return book
 }
 
 function readBook(bookId) { // Read
