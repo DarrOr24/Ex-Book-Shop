@@ -19,6 +19,7 @@ function renderBooks(){
     </tr>`)
 
     elTable.innerHTML = strHtmls.join('') 
+    renderStats()
 }
 
 function onRemoveBook(bookId){
@@ -79,4 +80,15 @@ function renderPopUp(msg){
     },2000)
 }
 
+function renderStats() {
+    const elExpens = document.querySelector('.expensive')
+    const elCheap = document.querySelector('.cheap')
+    const elAvg = document.querySelector('.average')
+
+    const stats = getStats()
+    
+    elExpens.innerText = stats.expensive
+    elCheap.innerText = stats.cheap
+    elAvg.innerText = stats.avg
+}
 

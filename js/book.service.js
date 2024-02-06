@@ -49,6 +49,16 @@ function clear(){
     renderBooks()
 }
 
+function getStats() {
+    return gBooks.reduce((acc, book) => {
+        if(book.price >= 200) acc.expensive++
+        if(book.price <= 80) acc.cheap++
+        if(book.price > 80 && book.price < 200) acc.avg++
+
+        return acc
+    }, { cheap: 0, avg: 0, expensive: 0})
+}
+
 
 //Private functions
 
