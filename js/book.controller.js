@@ -64,25 +64,6 @@ function onAddBook(){
     elModal.showModal()
 }
 
-function onSaveBook(){
-    const elForm = document.querySelector('.book-edit-modal form')
-
-    const elBookTitle = elForm.querySelector('.book-title')
-    const elBookPrice = elForm.querySelector('.book-price')
-    
-    const bookTitle = elBookTitle.value
-    const bookPrice = elBookPrice.value
-
-    const book = addBook(bookTitle, bookPrice)
-    elForm.reset()
-
-    renderBooks()
-    renderPopUp(`${book.title} was successfully added!`) 
-    
-    const elBookList = document.querySelector('.book-list')
-    elBookList.innerHTML += strHtml
-}
-
 function onReadBook(bookId) {
     const elModal = document.querySelector('.book-details')
     const elTxt = elModal.querySelector('h2 span')
@@ -161,8 +142,29 @@ function onSetSortBy() {
         gQueryOptions.sortBy = { rating: dir }
     }
 
-    console.log(gQueryOptions)
-
-    // gQueryOptions.sortBy = { [sortBy]: dir }
     renderBooks()
+}
+
+function onSaveBook(){
+    const elForm = document.querySelector('.book-edit-modal form')
+
+    const elBookTitle = elForm.querySelector('.book-title')
+    const elBookPrice = elForm.querySelector('.book-price')
+    
+    const bookTitle = elBookTitle.value
+    const bookPrice = elBookPrice.value
+
+    const book = addBook(bookTitle, bookPrice)
+    elForm.reset()
+
+    renderBooks()
+    renderPopUp(`${book.title} was successfully added!`) 
+    
+    const strHtml = `<option>${book.title}</option>`
+    const elBookList = document.querySelector('.book-list')
+    elBookList.innerHTML += strHtml
+}
+
+function onCloseBookEdit() {
+    document.querySelector('.book-edit-modal').close()
 }
