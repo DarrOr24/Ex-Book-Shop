@@ -52,11 +52,12 @@
     <dialog class="book-edit-modal">
         <form onsubmit="onSaveBook()" method="dialog">
             <h2>Add a Book</h2>
-            <!-- <select class="book-list">
-                <option value="">Choose book...</option>
-            </select> -->
             <input class="book-title" type="text" placeholder="Enter book title">
             <input class="book-price" type="number" placeholder="Enter book price">
+            <label>
+                <span>Rating:</span>
+                <input type="number" min="1" max="10" value="10"  >
+            </label>
             <img src="img/book-cover.png" alt="">
             <div class="actions">
                 <button type="button" onclick="onCloseBookEdit()">Cancel</button>

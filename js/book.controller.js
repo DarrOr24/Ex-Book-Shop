@@ -41,8 +41,10 @@ function renderBookTitles() {
         <option>${book.title}</option>
     `).join('')
 
-    const elBookLists = document.querySelectorAll('.book-list')
-    elBookLists.forEach(list => list.innerHTML += strHtml)
+    // const elBookLists = document.querySelectorAll('.book-list')
+    // elBookLists.forEach(list => list.innerHTML += strHtml)
+    const elBookList = document.querySelector('.book-list')
+    elBookList.innerHTML += strHtml
 }
 
 function onRemoveBook(bookId){
@@ -242,10 +244,11 @@ function onSaveBook(){
 
     const elBookTitle = elForm.querySelector('.book-title')
     const elBookPrice = elForm.querySelector('.book-price')
-    // const elSelectedTitle = elForm.querySelector('select')
-
+    const elBookRate = elForm.querySelector('label input')
+    
     const bookTitle = elBookTitle.value
     const bookPrice = elBookPrice.value
+    const bookRate = elBookRate.value
 
     if (!bookTitle) {
         alert('Enter book title')
@@ -260,17 +263,19 @@ function onSaveBook(){
 
     if (elTitle.innerText === 'Update'){
         renderPopUp(`${bookTitle} was successfully updated!`)
-        updatePrice(bookTitle, bookPrice) 
+        var book = updatePrice(bookTitle, bookPrice) 
     }
 
     else {
-        const book = addBook(bookTitle, bookPrice)
+        book = addBook(bookTitle, bookPrice)
         renderPopUp(`${book.title} was successfully added!`) 
         const strHtml = `<option>${book.title}</option>`
         const elBookList = document.querySelector('.book-list')
         elBookList.innerHTML += strHtml
     }
+
     elForm.reset()
+    book.rating = bookRate
     renderBooks() 
 }
 
