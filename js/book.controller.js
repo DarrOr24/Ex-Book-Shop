@@ -15,11 +15,13 @@ function renderBooks(){
     const elTable = document.querySelector('tbody')
     const books = getBooks(gQueryOptions)
 
-    const emptyTable = `<tr><td colspan="3">No matching books were found</td></tr>`
+    const emptyTable = `<tr><td colspan="4">No matching books were found</td></tr>`
+    const star = '⭐'
 
     const strHtmls = books.map(book => `<tr>
         <td class="col1">${book.title}</td>
         <td class="col2">${book.price}</td>
+        <td class="col3">${star.repeat(book.rating)}</td>
         <td class="btns">
             <button class="read"   onclick="onReadBook('${book.id}')">Read</button>
             <button class="update" onclick="onUpdateBook('${book.id}')">Update</button>
@@ -163,7 +165,7 @@ function onSaveBook(){
     const elBookTitle = elForm.querySelector('.book-title')
     const elBookPrice = elForm.querySelector('.book-price')
     const elSelectedTitle = elForm.querySelector('select')
-    
+
     var bookTitle = elBookTitle.value
     const bookPrice = elBookPrice.value
 
