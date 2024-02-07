@@ -298,3 +298,12 @@ function onNextPage() {
     }
     renderBooks()
 }
+
+function onPreviousPage(){
+    const bookCount = getBookCount(gQueryOptions.filterBy)
+    const maxIdx = Math.ceil(bookCount/gQueryOptions.page.size)-1
+
+    if(gQueryOptions.page.idx > 0 ) gQueryOptions.page.idx--
+    else if(gQueryOptions.page.idx === 0) gQueryOptions.page.idx = maxIdx
+    renderBooks()
+}
