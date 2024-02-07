@@ -73,6 +73,10 @@ function getStats() {
     }, { cheap: 0, avg: 0, expensive: 0})
 }
 
+function getBookCount(filterBy) {
+    return _filterBooks(filterBy).length
+}
+
 //Private functions
 
 function _filterBooks(filterBy) {

@@ -3,7 +3,7 @@
 const gQueryOptions = {
     filterBy: { txt: '', minRating: 0 },
     sortBy: {},
-    page: { idx: 0, size: 4 }
+    page: { idx: 0, size: 5 }
 }
 
 function onInit(){
@@ -286,4 +286,15 @@ function onSaveBook(){
 
 function onCloseBookEdit() {
     document.querySelector('.book-edit-modal').close()
+}
+
+function onNextPage() {
+    const bookCount = getBookCount(gQueryOptions.filterBy)
+
+    if(bookCount > (gQueryOptions.page.idx + 1) * gQueryOptions.page.size){
+        gQueryOptions.page.idx++
+    } else {
+        gQueryOptions.page.idx = 0
+    }
+    renderBooks()
 }
