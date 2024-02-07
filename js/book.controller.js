@@ -54,19 +54,14 @@ function onRemoveBook(bookId){
 }
 
 function onUpdateBook(bookId){
-    // const newPrice = prompt('Enter updated price')
-    // const strHtml = updatePrice(bookId, newPrice)
-    // renderPopUp(strHtml) 
-    // renderBooks()
-
+    const book = getBookById(bookId)
 
     const elModal = document.querySelector('.book-edit-modal')
     const elTitle = elModal.querySelector('h2')
-    elTitle.innerText = 'Update a book'
-    const elSelect = elModal.querySelector('select')
-    if(elSelect.classList.contains('hidden')) elSelect.classList.remove('hidden')
+    elTitle.innerText = 'Update' 
+    
     const elTitleInput = elModal.querySelector('.book-title')
-    if(!elTitleInput.classList.contains('hidden')) elTitleInput.classList.add('hidden')
+    elTitleInput.value = book.title
     elModal.showModal()
 }
 
@@ -74,8 +69,6 @@ function onAddBook(){
     const elModal = document.querySelector('.book-edit-modal')
     const elTitle = elModal.querySelector('h2')
     elTitle.innerText = 'Add a book'
-    const elSelect = elModal.querySelector('select')
-    if(!elSelect.classList.contains('hidden')) elSelect.classList.add('hidden')
     const elTitleInput = elModal.querySelector('.book-title')
     if(elTitleInput.classList.contains('hidden')) elTitleInput.classList.remove('hidden')
     elModal.showModal()
@@ -159,18 +152,21 @@ function onSetSortBy() {
     renderBooks()
 }
 
+function onSortByPrice(){
+    gQueryOptions.sortBy = {price: 1}
+    renderBooks()
+}
+
 function onSaveBook(){
     const elForm = document.querySelector('.book-edit-modal form')
 
     const elBookTitle = elForm.querySelector('.book-title')
     const elBookPrice = elForm.querySelector('.book-price')
-    const elSelectedTitle = elForm.querySelector('select')
+    // const elSelectedTitle = elForm.querySelector('select')
 
-    var bookTitle = elBookTitle.value
+    const bookTitle = elBookTitle.value
     const bookPrice = elBookPrice.value
 
-    if(!bookTitle) bookTitle = elSelectedTitle.value
-    
     if (!bookTitle) {
         alert('Enter book title')
         return
@@ -180,15 +176,22 @@ function onSaveBook(){
         return
     } 
   
-    const book = addBook(bookTitle, bookPrice)
-    elForm.reset()
+    const elTitle = elForm.querySelector('h2')
 
-    renderBooks()
-    renderPopUp(`${book.title} was successfully added!`) 
-    
-    const strHtml = `<option>${book.title}</option>`
-    const elBookList = document.querySelector('.book-list')
-    elBookList.innerHTML += strHtml
+    if (elTitle.innerText === 'Update'){
+        renderPopUp(`${bookTitle} was successfully updated!`)
+        updatePrice(bookTitle, bookPrice) 
+    }
+
+    else {
+        const book = addBook(bookTitle, bookPrice)
+        renderPopUp(`${book.title} was successfully added!`) 
+        const strHtml = `<option>${book.title}</option>`
+        const elBookList = document.querySelector('.book-list')
+        elBookList.innerHTML += strHtml
+    }
+    elForm.reset()
+    renderBooks() 
 }
 
 

@@ -9,7 +9,7 @@
 
 <body onload="onInit()">
 
-    <section class="filter">
+    <section class="top-square">
         <fieldset>
             <legend>Filter & Search</legend>
             
@@ -52,10 +52,9 @@
     <dialog class="book-edit-modal">
         <form onsubmit="onSaveBook()" method="dialog">
             <h2>Add a Book</h2>
-            <!-- <select class="book-list" onchange="onSelectTitle(this)"> -->
-            <select class="book-list">
+            <!-- <select class="book-list">
                 <option value="">Choose book...</option>
-            </select>
+            </select> -->
             <input class="book-title" type="text" placeholder="Enter book title">
             <input class="book-price" type="number" placeholder="Enter book price">
             <img src="img/book-cover.png" alt="">
@@ -72,7 +71,7 @@
         <thead>
             <tr class="header">
                 <td class="col1">Title</td>
-                <td class="col2">Price</td>
+                <td class="col2" onclick="onSortByPrice()">Price</td>
                 <td class="col3">Rate</td>
                 <td class="col4">Actions</td></tr>
         </thead>
