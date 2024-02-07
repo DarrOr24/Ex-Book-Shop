@@ -105,7 +105,7 @@ img {
 
 .pop-up{
     position:absolute;
-    top: 8em;
+    top: 5em;
     background-color: rgb(234, 215, 137);
     padding-inline: 0.5em;
     border-radius: 20%;  
