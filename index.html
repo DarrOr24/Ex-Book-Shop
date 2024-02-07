@@ -52,9 +52,9 @@
     <dialog class="book-edit-modal">
         <form onsubmit="onSaveBook()" method="dialog">
             <h2>Add a Book</h2>
-            <!-- <select class="vendor-list" onchange="onSelectVendor(this)">
-                <option value="">Choose vendor...</option>
-            </select> -->
+            <select class="book-list" onchange="onSelectTitle(this)">
+                <option value="">Choose book...</option>
+            </select>
             <input class="book-title" type="text" placeholder="Enter book title">
             <input class="book-price" type="number" placeholder="Enter book price">
             <img src="img/book-cover.png" alt="">

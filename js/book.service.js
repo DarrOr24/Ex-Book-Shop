@@ -7,6 +7,7 @@ _createBooks()
 function getBooks(options = {}){
     const filterBy = options.filterBy
     if (!filterBy) return gBooks
+   
     const books = _filterBooks(filterBy)
 
     if(options.sortBy.rating) {

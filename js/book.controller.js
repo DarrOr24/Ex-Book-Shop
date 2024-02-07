@@ -39,8 +39,8 @@ function renderBookTitles() {
         <option>${book.title}</option>
     `).join('')
 
-    const elBookList = document.querySelector('.book-list')
-    elBookList.innerHTML += strHtml
+    const elBookLists = document.querySelectorAll('.book-list')
+    elBookLists.forEach(list => list.innerHTML += strHtml)
 }
 
 function onRemoveBook(bookId){
@@ -52,14 +52,30 @@ function onRemoveBook(bookId){
 }
 
 function onUpdateBook(bookId){
-    const newPrice = prompt('Enter updated price')
-    const strHtml = updatePrice(bookId, newPrice)
-    renderPopUp(strHtml) 
-    renderBooks()
+    // const newPrice = prompt('Enter updated price')
+    // const strHtml = updatePrice(bookId, newPrice)
+    // renderPopUp(strHtml) 
+    // renderBooks()
+
+
+    const elModal = document.querySelector('.book-edit-modal')
+    const elTitle = elModal.querySelector('h2')
+    elTitle.innerText = 'Update a book'
+    const elSelect = elModal.querySelector('select')
+    if(elSelect.classList.contains('hidden')) elSelect.classList.remove('hidden')
+    const elTitleInput = elModal.querySelector('.book-title')
+    if(!elTitleInput.classList.contains('hidden')) elTitleInput.classList.add('hidden')
+    elModal.showModal()
 }
 
 function onAddBook(){
     const elModal = document.querySelector('.book-edit-modal')
+    const elTitle = elModal.querySelector('h2')
+    elTitle.innerText = 'Add a book'
+    const elSelect = elModal.querySelector('select')
+    if(!elSelect.classList.contains('hidden')) elSelect.classList.add('hidden')
+    const elTitleInput = elModal.querySelector('.book-title')
+    if(elTitleInput.classList.contains('hidden')) elTitleInput.classList.remove('hidden')
     elModal.showModal()
 }
 
@@ -88,9 +104,7 @@ function onBookFilter(){
 
 function onClear(){
     document.querySelector('.search').reset()
-    // const elSearch = document.querySelector('.search')
     clear()
-    // elSearch.value = gQueryOptions.filterBy = ''
     gQueryOptions.filterBy = ''
 }
 
