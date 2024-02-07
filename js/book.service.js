@@ -8,7 +8,7 @@ function getBooks(options = {}){
     const filterBy = options.filterBy
     if (!filterBy) return gBooks
    
-    const books = _filterBooks(filterBy)
+    var books = _filterBooks(filterBy)
 
     if(options.sortBy.rating) {
         books.sort((book1, book2) => (book1.rating - book2.rating) * options.sortBy.rating)
@@ -18,6 +18,11 @@ function getBooks(options = {}){
     }
     else if(options.sortBy.title) {
         books.sort((book1, book2) => book1.title.localeCompare(book2.title) * options.sortBy.title)
+    }
+
+    if(options.page) {
+        const startIdx = options.page.idx * options.page.size
+        books = books.slice(startIdx, startIdx + options.page.size)
     }
 
     return books

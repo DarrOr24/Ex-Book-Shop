@@ -105,16 +105,13 @@ img {
 
 .pop-up{
     position:absolute;
-    top: 5em;
+    top: 7em;
     background-color: rgb(234, 215, 137);
     padding-inline: 0.5em;
     border-radius: 20%;  
 }
 
 footer {
-    /* grid-area: footer; */
-    
-   
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -147,6 +144,10 @@ footer {
 }
 
 .actions {
+    position: absolute;
+    right: 2%;
+    left: 2%;
+    top: 5em;
     display: flex;
     justify-content: space-between;
 }
