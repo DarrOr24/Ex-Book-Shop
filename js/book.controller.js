@@ -1,6 +1,5 @@
 'use strict'
 
-
 const gQueryOptions = {
     filterBy: { txt: '', minRating: 0 },
     sortBy: {},
@@ -159,7 +158,6 @@ function onSetSortBy() {
     renderBooks()
 }
 
-
 function onSortByPrice(dir = 0 ){
     const elPriceColSpan = document.querySelector('.col2 span') 
     const elRateColSpan = document.querySelector('.col3 span') 
@@ -268,9 +266,7 @@ function onSaveBook(){
     const elTitle = elForm.querySelector('h2')
 
     if (elTitle.innerText === 'Update'){
-        
         const bookId = elBookTitle.id
-        console.log(bookId)
         renderPopUp(`${bookTitle} was successfully updated!`)
         var book = updateBook(bookId, bookTitle, bookPrice) 
     }
@@ -287,7 +283,6 @@ function onSaveBook(){
     book.rating = bookRate
     renderBooks() 
 }
-
 
 function onCloseBookEdit() {
     document.querySelector('.book-edit-modal').close()
