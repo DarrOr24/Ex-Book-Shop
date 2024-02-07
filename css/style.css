@@ -136,3 +136,13 @@ footer {
     margin-block: 2%;
 }
 
+.book-details form {
+    display:flex;
+    flex-direction:column;
+    place-items: center;
+}
+
+.close-btn {
+    place-self: start;
+}
+

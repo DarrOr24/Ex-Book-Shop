@@ -85,6 +85,8 @@ function onReadBook(bookId) {
     const elTxt = elModal.querySelector('h2 span')
     const elPre = elModal.querySelector('pre')
     const elImg = elModal.querySelector('.img')
+    const elUpdateBtn = elModal.querySelector('.update-details')
+    elUpdateBtn.id = bookId
 
     const book = readBook(bookId)
     const bookStr = JSON.stringify(book, null, 4)
