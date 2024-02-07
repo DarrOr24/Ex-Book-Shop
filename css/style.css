@@ -19,6 +19,9 @@ body {
 }
 
 table {
+    position: fixed;
+    top:15em;
+    place-self: center;
     background-color: rgb(191, 191, 191);
 }
 
@@ -44,8 +47,12 @@ tbody tr:nth-child(odd) {
     padding-inline-start: 2%;
 }
 
-.col3, .col4 {
+.col4 {
     width: 13em;
+}
+
+.col3, .col1 {
+    width: 15em;
 }
 
 .col2 {
