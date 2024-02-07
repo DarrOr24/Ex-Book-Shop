@@ -162,10 +162,22 @@ function onSaveBook(){
 
     const elBookTitle = elForm.querySelector('.book-title')
     const elBookPrice = elForm.querySelector('.book-price')
+    const elSelectedTitle = elForm.querySelector('select')
     
-    const bookTitle = elBookTitle.value
+    var bookTitle = elBookTitle.value
     const bookPrice = elBookPrice.value
 
+    if(!bookTitle) bookTitle = elSelectedTitle.value
+    
+    if (!bookTitle) {
+        alert('Enter book title')
+        return
+    } 
+    if (!bookPrice) {
+        alert('Enter book price')
+        return
+    } 
+  
     const book = addBook(bookTitle, bookPrice)
     elForm.reset()
 
@@ -176,6 +188,8 @@ function onSaveBook(){
     const elBookList = document.querySelector('.book-list')
     elBookList.innerHTML += strHtml
 }
+
+
 
 function onCloseBookEdit() {
     document.querySelector('.book-edit-modal').close()
