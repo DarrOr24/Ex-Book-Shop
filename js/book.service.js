@@ -96,13 +96,13 @@ function _createBooks() {
     }
 }
 
-function _createBook(title, price, img = 'img/book-cover.png'){
+function _createBook(title, price, img = 'img/book-cover.png' ){
     return {
         id: makeId(),
         title,
         price,
         img,
-        rating: getRandomInt(1, 11),
+        rating: getRandomInt(1,11),
     }
 }
 

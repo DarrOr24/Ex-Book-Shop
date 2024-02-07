@@ -44,12 +44,12 @@ tbody tr:nth-child(odd) {
     padding-inline-start: 2%;
 }
 
-.col1, .col4 {
+.col3, .col4 {
     width: 13em;
 }
 
 .col2 {
-    width: 4em;
+    width: 5em;
 }
 
 .btns {
@@ -93,8 +93,6 @@ tbody tr:nth-child(odd) {
 .search {
     grid-area: search;
 }
-
-
 
 
 img {
