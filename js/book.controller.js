@@ -142,18 +142,98 @@ function onSetSortBy() {
     const dir = elDir.checked ? -1 : 1
 
     if(sortBy === 'title'){
-        gQueryOptions.sortBy = { title: dir }
+        onSortByTitle(dir)
     } else if (sortBy === 'price'){
-        gQueryOptions.sortBy = { price: dir }
+        onSortByPrice(dir)
     } else if (sortBy === 'rating'){
-        gQueryOptions.sortBy = { rating: dir }
+        onSortByRate(dir)
     }
-
     renderBooks()
 }
 
-function onSortByPrice(){
-    gQueryOptions.sortBy = {price: 1}
+
+function onSortByPrice(dir = 0 ){
+    const elPriceColSpan = document.querySelector('.col2 span') 
+    const elRateColSpan = document.querySelector('.col3 span') 
+    elRateColSpan.innerText = ''
+    const elTitleColSpan = document.querySelector('.col1 span') 
+    elTitleColSpan.innerText = ''
+   
+    if(!dir){
+
+        if((!elPriceColSpan.innerText) || (elPriceColSpan.innerText === '-') ) {
+            gQueryOptions.sortBy = {price: 1}
+            elPriceColSpan.innerText = '+'
+        }
+        else if(elPriceColSpan.innerText === '+'){
+            gQueryOptions.sortBy = {rating: -1}
+            elPriceColSpan.innerText = '-'
+        }
+    }
+
+    else{
+        gQueryOptions.sortBy = {price: dir}
+        if(dir === 1) elPriceColSpan.innerText = '+' 
+        else elPriceColSpan.innerText = '-'
+    }
+    renderBooks()
+}
+
+function onSortByRate(dir=0){
+    const elRateColSpan = document.querySelector('.col3 span') 
+    const elPriceColSpan = document.querySelector('.col2 span') 
+    elPriceColSpan.innerText = ''
+    const elTitleColSpan = document.querySelector('.col1 span') 
+    elTitleColSpan.innerText = ''
+
+    if(!dir){
+
+        if((!elRateColSpan.innerText) || (elRateColSpan.innerText === '-') ) {
+            gQueryOptions.sortBy = {rating: 1}
+            elRateColSpan.innerText = '+'
+        }
+        else if(elRateColSpan.innerText === '+'){
+            gQueryOptions.sortBy = {rating: -1}
+            elRateColSpan.innerText = '-'
+        }
+    }
+
+    else {
+        gQueryOptions.sortBy = {rating: dir}
+        if(dir === 1) elRateColSpan.innerText = '+' 
+        else elRateColSpan.innerText = '-'
+    }
+   
+    renderBooks()
+}
+
+function onSortByTitle(dir = 0){
+    const elPriceColSpan = document.querySelector('.col2 span') 
+    elPriceColSpan.innerText = ''
+    const elRateColSpan = document.querySelector('.col3 span') 
+    elRateColSpan.innerText = ''
+    const elTitleColSpan = document.querySelector('.col1 span')
+    console.log(dir)
+    
+    if(!dir){
+
+        if((!elTitleColSpan.innerText) || (elTitleColSpan.innerText === '-') ) {
+            gQueryOptions.sortBy = {title: 1}
+            elTitleColSpan.innerText = '+'
+        }
+        else if(elTitleColSpan.innerText === '+'){
+            gQueryOptions.sortBy = {title: -1}
+            elTitleColSpan.innerText = '-'
+        }
+    }
+
+    else {
+        gQueryOptions.sortBy = {title: dir}
+        if(dir === 1) elTitleColSpan.innerText = '+' 
+        else elTitleColSpan.innerText = '-'
+    }
+    
+    
     renderBooks()
 }
 
@@ -193,7 +273,6 @@ function onSaveBook(){
     elForm.reset()
     renderBooks() 
 }
-
 
 
 function onCloseBookEdit() {
