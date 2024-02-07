@@ -1,5 +1,6 @@
 'use strict'
 
+
 const gQueryOptions = {
     filterBy: { txt: '', minRating: 0 },
     sortBy: {},
@@ -60,7 +61,10 @@ function onUpdateBook(bookId){
 
     const elModal = document.querySelector('.book-edit-modal')
     const elTitle = elModal.querySelector('h2')
+    const elBookId = elModal.querySelector('.book-title')
+    elBookId.id = bookId
     elTitle.innerText = 'Update' 
+    
     
     const elTitleInput = elModal.querySelector('.book-title')
     elTitleInput.value = book.title
@@ -262,8 +266,11 @@ function onSaveBook(){
     const elTitle = elForm.querySelector('h2')
 
     if (elTitle.innerText === 'Update'){
+        
+        const bookId = elBookTitle.id
+        console.log(bookId)
         renderPopUp(`${bookTitle} was successfully updated!`)
-        var book = updatePrice(bookTitle, bookPrice) 
+        var book = updateBook(bookId, bookTitle, bookPrice) 
     }
 
     else {
