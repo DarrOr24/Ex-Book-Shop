@@ -158,6 +158,9 @@ function onSetSortBy() {
 }
 
 function onSortByPrice(dir = 0 ){
+    const elCheckBox = document.querySelector('.sort-desc')
+    const elSortBy = document.querySelector('.sort-by select')
+    elSortBy.value = 'price'
     const elPriceColSpan = document.querySelector('.col2 span') 
     const elRateColSpan = document.querySelector('.col3 span') 
     elRateColSpan.innerText = ''
@@ -165,18 +168,18 @@ function onSortByPrice(dir = 0 ){
     elTitleColSpan.innerText = ''
    
     if(!dir){
-
         if((!elPriceColSpan.innerText) || (elPriceColSpan.innerText === '-') ) {
             gQueryOptions.sortBy = {price: 1}
             elPriceColSpan.innerText = '+'
-        }
-        else if(elPriceColSpan.innerText === '+'){
-            gQueryOptions.sortBy = {rating: -1}
+            elCheckBox.checked = false
+        }else if(elPriceColSpan.innerText === '+'){
+            gQueryOptions.sortBy = {price: -1}
             elPriceColSpan.innerText = '-'
+            elCheckBox.checked = true
         }
     }
 
-    else{
+    else {
         gQueryOptions.sortBy = {price: dir}
         if(dir === 1) elPriceColSpan.innerText = '+' 
         else elPriceColSpan.innerText = '-'
@@ -185,6 +188,9 @@ function onSortByPrice(dir = 0 ){
 }
 
 function onSortByRate(dir=0){
+    const elCheckBox = document.querySelector('.sort-desc')
+    const elSortBy = document.querySelector('.sort-by select')
+    elSortBy.value = 'rating'
     const elRateColSpan = document.querySelector('.col3 span') 
     const elPriceColSpan = document.querySelector('.col2 span') 
     elPriceColSpan.innerText = ''
@@ -196,10 +202,11 @@ function onSortByRate(dir=0){
         if((!elRateColSpan.innerText) || (elRateColSpan.innerText === '-') ) {
             gQueryOptions.sortBy = {rating: 1}
             elRateColSpan.innerText = '+'
-        }
-        else if(elRateColSpan.innerText === '+'){
+            elCheckBox.checked = false
+        }else if(elRateColSpan.innerText === '+'){
             gQueryOptions.sortBy = {rating: -1}
             elRateColSpan.innerText = '-'
+            elCheckBox.checked = true
         }
     }
 
@@ -208,27 +215,28 @@ function onSortByRate(dir=0){
         if(dir === 1) elRateColSpan.innerText = '+' 
         else elRateColSpan.innerText = '-'
     }
-   
     renderBooks()
 }
 
 function onSortByTitle(dir = 0){
+    const elCheckBox = document.querySelector('.sort-desc')
+    const elSortBy = document.querySelector('.sort-by select')
+    elSortBy.value = 'title'
     const elPriceColSpan = document.querySelector('.col2 span') 
     elPriceColSpan.innerText = ''
     const elRateColSpan = document.querySelector('.col3 span') 
     elRateColSpan.innerText = ''
     const elTitleColSpan = document.querySelector('.col1 span')
-    console.log(dir)
     
     if(!dir){
-
         if((!elTitleColSpan.innerText) || (elTitleColSpan.innerText === '-') ) {
             gQueryOptions.sortBy = {title: 1}
             elTitleColSpan.innerText = '+'
-        }
-        else if(elTitleColSpan.innerText === '+'){
+            elCheckBox.checked = false
+        }else if(elTitleColSpan.innerText === '+'){
             gQueryOptions.sortBy = {title: -1}
             elTitleColSpan.innerText = '-'
+            elCheckBox.checked = true
         }
     }
 
@@ -237,8 +245,6 @@ function onSortByTitle(dir = 0){
         if(dir === 1) elTitleColSpan.innerText = '+' 
         else elTitleColSpan.innerText = '-'
     }
-    
-    
     renderBooks()
 }
 
