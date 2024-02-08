@@ -36,15 +36,12 @@ function renderBooks(){
 
 function renderBookTitles() {
     const books = getBooks(gQueryOptions)
-    
     const strHtml = books.map(book => `
         <option>${book.title}</option>
     `).join('')
 
-    // const elBookLists = document.querySelectorAll('.book-list')
-    // elBookLists.forEach(list => list.innerHTML += strHtml)
     const elBookList = document.querySelector('.book-list')
-    elBookList.innerHTML += strHtml
+    elBookList.innerHTML = '<option value="">Select book</option>' + strHtml
 }
 
 function onRemoveBook(bookId){
@@ -53,6 +50,8 @@ function onRemoveBook(bookId){
     renderPopUp(`${book.title} was successfully removed!`) 
     const elBookList = document.querySelector('.book-list')
     elBookList.remove(book.title)
+
+    renderBookTitles()
 }
 
 function onUpdateBook(bookId){
@@ -274,14 +273,12 @@ function onSaveBook(){
     else {
         book = addBook(bookTitle, bookPrice)
         renderPopUp(`${book.title} was successfully added!`) 
-        const strHtml = `<option>${book.title}</option>`
-        const elBookList = document.querySelector('.book-list')
-        elBookList.innerHTML += strHtml
     }
 
     elForm.reset()
     book.rating = bookRate
     renderBooks() 
+    renderBookTitles()
 }
 
 function onCloseBookEdit() {
